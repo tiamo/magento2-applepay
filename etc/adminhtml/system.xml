@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="braintree_section" sortOrder="6" showInDefault="0" showInWebsite="0" showInStore="0">
+                <group id="braintree" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+
+                    <field id="active_braintree_applepay" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enable ApplePay through Braintree</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/braintree_applepay/active</config_path>
+                        <requires>
+                            <group id="braintree_required"/>
+                        </requires>
+                    </field>
+
+                    <group id="braintree_applepay" translate="label" showInDefault="1" showInWebsite="1" sortOrder="40">
+                        <label>ApplePay through Braintree</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Title</label>
+                            <config_path>payment/braintree_applepay/title</config_path>
+                            <comment>It is recommended to set this value to "ApplePay" per store views.</comment>
+                        </field>
+                        <field id="sort_order" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Sort Order</label>
+                            <frontend_class>validate-number</frontend_class>
+                            <config_path>payment/braintree_applepay/sort_order</config_path>
+                        </field>
+                        <field id="merchant_name_override" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                            <label>Override Merchant Name</label>
+                            <config_path>payment/braintree_applepay/merchant_name_override</config_path>
+                        </field>
+                        <field id="payment_action" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Payment Action</label>
+                            <source_model>Magento\Braintree\Model\Adminhtml\Source\PaymentAction</source_model>
+                            <config_path>payment/braintree_applepay/payment_action</config_path>
+                        </field>
+                        <field id="allowspecific" translate="label" type="allowspecific" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Payment from Applicable Countries</label>
+                            <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                            <config_path>payment/braintree_applepay/allowspecific</config_path>
+                        </field>
+                        <field id="specificcountry" translate="label" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Payment from Specific Countries</label>
+                            <source_model>Magento\Braintree\Model\Adminhtml\System\Config\Country</source_model>
+                            <can_be_empty>1</can_be_empty>
+                            <config_path>payment/braintree_applepay/specificcountry</config_path>
+                        </field>
+                        <field id="debug" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Debug</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/braintree_applepay/debug</config_path>
+                        </field>
+                        <field id="display_on_shopping_cart" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Display on Shopping Cart</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/braintree_applepay/display_on_shopping_cart</config_path>
+                            <comment>Also affects mini-shopping cart.</comment>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

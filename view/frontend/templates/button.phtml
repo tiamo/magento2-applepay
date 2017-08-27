@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @var \Teslaamazing\ApplePay\Block\Button $block
+ */
+
+$id = $block->getContainerId() . mt_rand();
+
+$config = [
+    'Teslaamazing_ApplePay/js/button' => [
+        'id' => $id,
+        'clientToken' => $block->getClientToken(),
+        'displayName' => $block->getMerchantName(),
+        'actionSuccess' => $block->getActionSuccess()
+    ]
+];
+
+?>
+<div data-mage-init='<?= json_encode($config); ?>' class="checkout apple-pay-button-wrapper"
+     style="display:none">
+    <button data-currency="<?= $block->getCurrency(); ?>"
+            data-locale="<?= $block->getLocale(); ?>"
+            data-amount="<?= $block->getAmount(); ?>"
+            id="<?= $id; ?>"
+            class="apple-pay-button">
+    </button>
+</div>
