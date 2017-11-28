@@ -137,7 +137,7 @@ class QuoteUpdater extends AbstractHelper
             $address->setRegion($addressData['administrativeArea']);
         }
         if (isset($addressData['countryCode'])) {
-            $address->setCountryId($addressData['countryCode']);
+            $address->setCountryId(strtoupper($addressData['countryCode']));
         }
         if (isset($addressData['postalCode'])) {
             $address->setPostcode($addressData['postalCode']);
