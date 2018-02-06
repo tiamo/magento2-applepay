@@ -1,7 +1,7 @@
 {
   "name": "teslaamazing/module-applepay",
   "description": "Magento 2 Apple Pay module",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "authors": [
     {
       "name": "Korniienko Vladyslav",
@@ -20,9 +20,9 @@
     "ASL-3.0"
   ],
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0",
-    "magento/module-sales-rule": "100.0.*",
-    "magento/framework": "100.0.*"
+    "php": "7.0.2|7.0.4|~7.0.6|~7.1.0",
+    "magento/framework": "101.0.*",
+    "magento/module-braintree": "100.2.*",
   },
   "autoload": {
     "files": [

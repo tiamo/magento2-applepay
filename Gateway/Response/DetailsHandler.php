@@ -4,7 +4,7 @@ namespace Teslaamazing\ApplePay\Gateway\Response;
 
 use Braintree\Transaction\ApplePayCardDetails;
 use Magento\Braintree\Gateway\Config\Config;
-use Magento\Braintree\Gateway\Helper\SubjectReader;
+use Magento\Braintree\Gateway\SubjectReader;
 use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
