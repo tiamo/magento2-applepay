@@ -1,10 +1,10 @@
 {
-  "name": "teslaamazing/module-applepay",
+  "name": "tiamo/magento2-applepay",
   "description": "Magento 2 Apple Pay module",
   "version": "1.1.0",
   "authors": [
     {
-      "name": "Korniienko Vladyslav",
+      "name": "Vladyslav K",
       "email": "vk.tiamo@gmail.com"
     }
   ],

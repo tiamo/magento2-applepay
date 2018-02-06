@@ -3,7 +3,7 @@ Magento 2 Apple Pay Integration
 Accept Apple Pay payments through the Braintree payment gateway.
 
 ## Requirements
-* Magento2
+* Magento 2.0+
 * PHP 5.5.0 and up.
 
 ## Installation
@@ -25,4 +25,4 @@ or add
 to the require section of your `composer.json` file.
 
 ## License
-GNU GENERAL PUBLIC LICENSE Version 3
+[Open Software License ("OSL") v. 3.0](https://opensource.org/licenses/OSL-3.0)
