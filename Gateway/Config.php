@@ -12,10 +12,21 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_DISPLAY_ON_SHOPPING_CART = 'display_on_shopping_cart';
     const KEY_MERCHANT_NAME_OVERRIDE = 'merchant_name_override';
     const KEY_REQUIRE_BILLING_ADDRESS = 'require_billing_address';
+    const XML_PATH_STORE_INFO_NAME = \Magento\Store\Model\Information::XML_PATH_STORE_INFO_NAME;
 
     private $scopeConfig;
     private $ccConfig;
     private $icon = [];
+
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    protected $storeManager;
+
+    /**
+     * @var string $storeCode
+     */
+    protected $storeCode;
 
     /**
      * Config constructor.
@@ -27,6 +38,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         CcConfig $ccConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
         $methodCode = null,
         $pathPattern = self::DEFAULT_PATH_PATTERN
     )
@@ -34,6 +46,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
         $this->scopeConfig = $scopeConfig;
         $this->ccConfig = $ccConfig;
+        $this->storeCode = $storeManager->getStore()->getCode();
     }
 
     /**
@@ -63,7 +76,11 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         $merchantName = $this->getValue(self::KEY_MERCHANT_NAME_OVERRIDE);
         if (empty($this->getValue(self::KEY_MERCHANT_NAME_OVERRIDE))) {
-            return $this->scopeConfig->getValue(\Magento\Store\Model\Information::XML_PATH_STORE_INFO_NAME);
+            $merchantName = $this->scopeConfig->getValue(
+                self::XML_PATH_STORE_INFO_NAME,
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+                $this->storeCode
+            );
         }
         return $merchantName;
     }
